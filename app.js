@@ -3,7 +3,7 @@ var preAuth = require('http-auth');
 var basic = preAuth.basic({
         realm: "Restricted Access! Please login to proceed"
     }, function (username, password, callback) { 
-         callback( (username === "daniel" && password === "anno2018"));
+         callback( ((username === "daniel" && password === "anno2018") || (username === "beni" && password === "beni1234")));
     }
 );
 
