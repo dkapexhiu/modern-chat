@@ -1,10 +1,17 @@
-var wwwhisper = require('connect-wwwhisper');
+// HTTP Authentication 
+var preAuth = require('http-auth');
+var basic = preAuth.basic({
+        realm: "Restricted Access! Please login to proceed"
+    }, function (username, password, callback) { 
+         callback( (username === "daniel" && password === "anno2018"));
+    }
+);
+
+// Setup server
 const express = require('express');
 const app = express();
 
-// app holds a reference to express or connect framework, it
-// may be named differently in your source file.
-app.use(wwwhisper());
+app.use(preAuth.connect(basic));
 
 //set the template engine ejs
 app.set('view engine', 'ejs')
