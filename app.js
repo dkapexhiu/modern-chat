@@ -1,5 +1,10 @@
-const express = require('express')
-const app = express()
+var wwwhisper = require('connect-wwwhisper');
+const express = require('express');
+const app = express();
+
+// app holds a reference to express or connect framework, it
+// may be named differently in your source file.
+app.use(wwwhisper());
 
 //set the template engine ejs
 app.set('view engine', 'ejs')
